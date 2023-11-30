@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def magic_calculation(a, b):
     add = __import__('magic_calculation_102').add
     sub = __import__('magic_calculation_102').sub
@@ -9,8 +10,3 @@ def magic_calculation(a, b):
         return c
     else:
         return sub(a, b)
-
-# Test the function
-result = magic_calculation(10, 5)
-print(result)
-
