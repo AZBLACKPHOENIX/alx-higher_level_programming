@@ -7,6 +7,6 @@ def print_matrix_integer(matrix=[[]]):
                 # Last element in the row, no space after it
                 print("{:d}".format(num), end="$\n")
             else:
-                # Not the last element, add "$" after it
+                # Not the last element, add space after it
                 print("{:d}".format(num), end=" ")
     print("$")
