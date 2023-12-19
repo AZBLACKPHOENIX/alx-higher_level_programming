@@ -6,31 +6,31 @@ class Node:
         """Initialize a node with data and next_node."""
         self.data = data
         self.next_node = next_node
-
+    """property"""
     @property
     def data(self):
         """Retrieve the value of data."""
         return self.__data
-
+    """data setter"""
     @data.setter
     def data(self, value):
         """Set the value of data with validation."""
         if type(value) is not int:
             raise TypeError("data must be an integer")
         self.__data = value
-
+    """property"""
     @property
     def next_node(self):
         """Retrieve the value of next_node."""
         return self.__next_node
-
+    """setter"""
     @next_node.setter
     def next_node(self, value):
         """Set the value of next_node with validation."""
         if value is not None and not isinstance(value, Node):
             raise TypeError("next_node must be a Node object")
         self.__next_node = value
-
+"""define singly linked class"""
 class SinglyLinkedList:
     """Define a singly linked list."""
     def __init__(self):
