@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import math
-
+"""define magicClass"""
 class MagicClass:
     """Represent a magic class with radius attribute."""
     def __init__(self, radius=0):
