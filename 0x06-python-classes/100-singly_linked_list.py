@@ -31,7 +31,6 @@ class Node:
             raise TypeError("next_node must be a Node object")
         self.__next_node = value
 
-
 class SinglyLinkedList:
     """Define a singly linked list."""
     def __init__(self):
@@ -41,7 +40,8 @@ class SinglyLinkedList:
     def sorted_insert(self, value):
         """Insert a new Node into the correct sorted position in the list."""
         new_node = Node(value)
-        if self.head is None or self.head.data >= value:
+
+        if self.head is None or self.head.data > value:
             new_node.next_node = self.head
             self.head = new_node
         else:
@@ -59,21 +59,3 @@ class SinglyLinkedList:
             result += str(current.data) + "\n"
             current = current.next_node
         return result
-
-if __name__ == "__main__":
-    SinglyLinkedList = __import__('100-singly_linked_list').SinglyLinkedList
-
-    sll = SinglyLinkedList()
-    sll.sorted_insert(2)
-    sll.sorted_insert(5)
-    sll.sorted_insert(3)
-    sll.sorted_insert(10)
-    sll.sorted_insert(1)
-    sll.sorted_insert(-4)
-    sll.sorted_insert(-3)
-    sll.sorted_insert(4)
-    sll.sorted_insert(5)
-    sll.sorted_insert(12)
-    sll.sorted_insert(3)
-    print(sll)
-
