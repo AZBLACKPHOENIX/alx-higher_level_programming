@@ -1,64 +1,62 @@
 #!/usr/bin/python3
-""" import system """
+""" import systems"""
 import sys
-""" Create Class"""
-def is_safe(board, row, col, n):
-    """Check if it's safe to place a queen at board[row][col]"""
-    # Check the row on the left side
-    for i in range(col):
-        if board[row][i] == 1:
-            return False
+""" create class """
 
-    # Check upper diagonal on the left side
-    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
-        if board[i][j] == 1:
-            return False
+class NQueens:
+""" initialize class """
+    def __init__(self, N):
+        if not N.isdigit():
+            print("N must be a number")
+            sys.exit(1)
 
-    # Check lower diagonal on the left side
-    for i, j in zip(range(row, n, 1), range(col, -1, -1)):
-        if board[i][j] == 1:
-            return False
+        self.N = int(N)
+        if self.N < 4:
+            print("N must be at least 4")
+            sys.exit(1)
 
-    return True
+        self.board = [[0 for _ in range(self.N)] for _ in range(self.N)]
+        self.solutions = []
 
-def solve_nqueens(board, col, n, solutions):
-    """Recursive function to solve N queens problem"""
-    if col == n:
-        solutions.append([row[:] for row in board])
-        return
+    def is_safe(self, row, col):
+        """Check if it's safe to place a queen at self.board[row][col]"""
+        for i in range(col):
+            if self.board[row][i] == 1:
+                return False
 
-    for i in range(n):
-        if is_safe(board, i, col, n):
-            board[i][col] = 1
-            solve_nqueens(board, col + 1, n, solutions)
-            board[i][col] = 0
+        for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+            if self.board[i][j] == 1:
+                return False
 
-def print_solutions(solutions):
-    """Print the solutions in the specified format"""
-    for solution in solutions:
-        print(solution)
+        for i, j in zip(range(row, self.N, 1), range(col, -1, -1)):
+            if self.board[i][j] == 1:
+                return False
 
-def nqueens(N):
-    """Main function to solve N queens problem"""
-    if not N.isdigit():
-        print("N must be a number")
-        sys.exit(1)
+        return True
 
-    N = int(N)
-    if N < 4:
-        print("N must be at least 4")
-        sys.exit(1)
+    def solve_nqueens(self, col):
+        """Recursive function to solve N queens problem"""
+        if col == self.N:
+            self.solutions.append([row[:] for row in self.board])
+            return
 
-    board = [[0 for _ in range(N)] for _ in range(N)]
-    solutions = []
+        for i in range(self.N):
+            if self.is_safe(i, col):
+                self.board[i][col] = 1
+                self.solve_nqueens(col + 1)
+                self.board[i][col] = 0
 
-    solve_nqueens(board, 0, N, solutions)
-    print_solutions(solutions)
+    def print_solutions(self):
+        """Print the solutions in the specified format"""
+        for solution in self.solutions:
+            print(solution)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
 
-    nqueens(sys.argv[1])
+    n_queens_solver = NQueens(sys.argv[1])
+    n_queens_solver.solve_nqueens(0)
+    n_queens_solver.print_solutions()
 
