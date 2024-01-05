@@ -4,7 +4,7 @@ import sys
 """ create class """
 
 class NQueens:
-""" initialize class """
+    """ initialize class """
     def __init__(self, N):
         if not N.isdigit():
             print("N must be a number")
