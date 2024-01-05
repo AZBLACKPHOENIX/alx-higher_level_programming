@@ -1,6 +1,7 @@
 #!/usr/bin/python3
+""" import system """
 import sys
-
+""" Create Class"""
 def is_safe(board, row, col, n):
     """Check if it's safe to place a queen at board[row][col]"""
     # Check the row on the left side
