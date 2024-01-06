@@ -1,0 +1,31 @@
+import doctest
+import random
+
+def test_add_integer():
+    assert add_integer(1, 2) == 3
+    assert add_integer(100, -2) == 98
+    assert add_integer(2) == 100
+    assert add_integer(100.3, -2) == 98
+
+    # testing random integers
+    for _ in range(100):
+        a = random.randint(-1000, 1000)
+        b = random.randint(-1000, 1000)
+        assert add_integer(a, b) == a + b
+
+    # testing with wrong data types
+    for value in ['string', [1, 2, 3], {'a': 1, 'b': 2}, None]:
+        with pytest.raises(TypeError):
+            add_integer(1, value)
+
+        with pytest.raises(TypeError):
+            add_integer(value)
+
+    # testing with a mix of integers and floats
+    assert add_integer(1, 2.5) == 3
+    assert add_integer(1.5, 2) == 3
+    assert add_integer(1.5, 2.5) == 4
+
+if __name__ == "__main__":
+    test_add_integer()
+    doctest.testmod()
