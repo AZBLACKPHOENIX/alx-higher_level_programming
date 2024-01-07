@@ -1,31 +1,96 @@
-import doctest
-import random
+# 0-add_integer.txt
 
-def test_add_integer():
-    assert add_integer(1, 2) == 3
-    assert add_integer(100, -2) == 98
-    assert add_integer(2) == 100
-    assert add_integer(100.3, -2) == 98
+=================================
+CREATE TESTS FOR 0-add_integer.py
+=================================
 
-    # testing random integers
-    for _ in range(100):
-        a = random.randint(-1000, 1000)
-        b = random.randint(-1000, 1000)
-        assert add_integer(a, b) == a + b
+This module defines an integer addition function add_integer(a, b=98)
 
-    # testing with wrong data types
-    for value in ['string', [1, 2, 3], {'a': 1, 'b': 2}, None]:
-        with pytest.raises(TypeError):
-            add_integer(1, value)
+::
+	>>> add_integer = _import_('0-add_integer').add_integer
+	>>> add_integer(2,3)
+	5
 
-        with pytest.raises(TypeError):
-            add_integer(value)
+::
+	
+	>>> add_integer(2, -3)
+	-1
 
-    # testing with a mix of integers and floats
-    assert add_integer(1, 2.5) == 3
-    assert add_integer(1.5, 2) == 3
-    assert add_integer(1.5, 2.5) == 4
+The function which also works with floating-point value.
 
-if __name__ == "__main__":
-    test_add_integer()
-    doctest.testmod()
+::
+
+	>>> add_integer(2.0, 3.0)
+	5
+
+::
+	>>> add_integer(2.9, 0.2)
+	2
+
+::
+
+	>>> add_integer(-2.9, -0.2)
+	-2
+
+::
+
+	>>> add_integer(2.3, -3)
+	-1
+::
+	>>> add_integer(2)
+	100
+
+Non-numbers
+===========
+
+If either an argument is non-inter and non-float, a TypeError is raised:
+
+::
+	>>> add_integer("hello", 3)
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+::
+	>>> add_integer(2, "hello")
+	Traceback (most recent call last):
+	TypeError: b must be an integer
+
+::
+	>>> add_integer(None):
+	Traceback (most recent call last):
+	Typeback a must be an integer
+
+::	
+	>>> add_integer(2.3, None)
+	Traceback (most recent call last):
+	TypeError: b must be am integer
+
+If both arguments are not integers and not floats, a TypeError message is only printed for the first value
+
+::
+	
+	>>> add_integer("hello", "there")
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+This function should fail if infinity is provided
+
+::
+	>>> add_integer(float('inf'))
+	Traceback (most recent call last):
+	OverflowError: cannot convert float infinity to integer
+
+::
+	>>> add_integer(2, float('inf'))
+	Traceback (most recent call last):
+	OverflowError: cannot convert float infinity to integer
+
+::
+	>>> add_integer(float('nan'):
+	Traceback (most recent call last):
+	ValueError: cannot convert float Nan to integer
+
+::
+	>>> add_integer(2, float('nan'))
+	Traceback (most recent call last):
+	ValueError: cannot convert float Nan to integer
