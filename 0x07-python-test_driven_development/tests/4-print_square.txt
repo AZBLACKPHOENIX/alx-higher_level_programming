@@ -1,0 +1,56 @@
+==============================
+PRINT SQUARE FUNCTION DOCUMENTATION
+==============================
+
+This module defines a function print_square(size) that prints a square with the character #.
+
+Parameters:
+    - size (int): Size length of the square.
+
+Raises:
+    - TypeError: If size is not an integer.
+    - ValueError: If size is less than 0.
+    - TypeError: If size is a float and is less than 0.
+
+Usage Examples:
+::
+
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+::
+
+    >>> print_square(10)
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+
+::
+
+    >>> print_square(0)
+    (prints nothing)
+
+::
+
+    >>> print_square(1)
+    #
+
+::
+
+    >>> print_square(-1)
+    Traceback (most recent call last):
+        ...
+    ValueError: size must be >= 0
+
+==============================
+
