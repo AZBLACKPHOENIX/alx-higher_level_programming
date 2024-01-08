@@ -1,1 +1,1 @@
-INHERITANCE
+tests
