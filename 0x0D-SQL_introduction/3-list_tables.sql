@@ -1,2 +1,2 @@
-#Show All Tables
+--Show All Tables
 SHOW TABLES;

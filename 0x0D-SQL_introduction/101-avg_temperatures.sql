@@ -1,3 +1,4 @@
+--City temperature
 SELECT city, AVG(temperature) AS average_temperature_Fahrenheit
 FROM temperatures
 GROUP BY city
