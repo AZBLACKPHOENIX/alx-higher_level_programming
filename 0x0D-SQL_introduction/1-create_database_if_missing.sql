@@ -1,2 +1,2 @@
---Show All Database
+/* Show All Database */
 SHOW DATABASES;
