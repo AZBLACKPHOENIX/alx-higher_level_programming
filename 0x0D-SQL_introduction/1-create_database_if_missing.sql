@@ -1,3 +1,2 @@
-hjjhjb
-
+--Show All Database
 SHOW DATABASES;
